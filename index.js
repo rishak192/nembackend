@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 
 app.listen(process.env.PORT||4000, () => {
+  console.log("listening");
 });
 
 require('dotenv/config')
@@ -28,6 +29,7 @@ const mongoose = require('mongoose')
 const url = process.env.URL
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
+  console.log("connected");
 })
 
 const path = require('path')
@@ -44,7 +46,7 @@ app.post('/login', async (req, res) => {
   res.cookie("token", "risak")
   if (email === "admin@namasys.co" && pass === "admin") {
     const token = jwt.sign({ email: email }, process.env.SECRET, {
-      expiresIn: '600s'
+      expiresIn: '300s'
     })
 
     res.json({ 'mes': token })
