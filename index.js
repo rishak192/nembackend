@@ -35,7 +35,7 @@ const { ObjectId } = require('mongodb')
 const UserFuntion = require('./userfunction/userfunction')
 
 app.get('/', function (req, res) {
-
+  res.send("hello")
 })
 
 app.post('/login', async (req, res) => {
